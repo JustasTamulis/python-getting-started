@@ -13,11 +13,6 @@ from .models import Greeting
 #     r = requests.get('https://httpbin.org/status/418', timeout=10)
 #     return HttpResponse('<pre>' + r.text + '</pre>')
 
-def hello(request):
-    times = int(os.environ.get('TIMES', 3))
-    return HttpResponse('Hello! ' * times)
-
-
 
 def index(request):
     # When running the app locally:
@@ -29,3 +24,7 @@ def index(request):
     greetings = Greeting.objects.all()
 
     return render(request, "db.html", {"greetings": greetings})
+
+def hello(request):
+    times = int(os.environ.get('TIMES', 3))
+    return HttpResponse('Hello! ' * times)
