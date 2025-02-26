@@ -13,22 +13,15 @@ from .models import Greeting
 #     r = requests.get('https://httpbin.org/status/418', timeout=10)
 #     return HttpResponse('<pre>' + r.text + '</pre>')
 
-def index(request):
+def hello(request):
     times = int(os.environ.get('TIMES', 3))
     return HttpResponse('Hello! ' * times)
 
 
 
-def db(request):
-    # If you encounter errors visiting the `/db/` page on the example app, check that:
-    #
-    # When running the app on Heroku:
-    #   1. You have added the Postgres database to your app.
-    #   2. You have uncommented the `psycopg` dependency in `requirements.txt`, and the `release`
-    #      process entry in `Procfile`, git committed your changes and re-deployed the app.
-    #
+def index(request):
     # When running the app locally:
-    #   1. You have run `./manage.py migrate` to create the `hello_greeting` database table.
+    #   1. You have run `./manage.py migrate` to create the database table.
 
     greeting = Greeting()
     greeting.save()
